@@ -16,18 +16,28 @@ class Menu():
                 'User input: ')
 
         if userInput == 1:
-            FileHandler().readContainerList(AutoDocker().containerListFile)
+            AutoDocker().displayContainers()	    
             self.mainMenu()
         elif userInput == 2:
-            createRange = input('\nHow many containers do you wish to create? ')
-            FileHandler().createContainer(createRange)
+            userCrInput = input('\nDo you wish to create a [1]Default server or [2]Custom name? ')
+            
+            if userCrInput == 1:
+                userCrConInput = input('\nHow many default containers do you want to create? ')
+            elif userCrInput == 2:
+                userCrConInput = raw_input('\nPlease enter the name of the custom server: ')
+
+            AutoDocker().createContainer(userCrConInput)
+            self.mainMenu()
         elif userInput == 3:
             deleteRequest = input('\nWhat container do you want to delete? ')
-            FileHandler().deleteContainer(deleteRequest)
+            AutoDocker().deleteContainer(deleteRequest)
+            self.mainMenu()
         elif userInput == 4:
             AutoDocker().startContainer()
+            self.mainMenu()
         elif userInput == 5:
             AutoDocker().stopContainer()
+            self.mainMenu()
         elif userInput == 6:
             sys.exit('\nGoodbye\n')
         else:
