@@ -5,7 +5,7 @@ class AutoDocker():
 
     containerListFile = 'containerlist.csv'    
     servName = 'sv-centos-{}'
-    sudoPassword = 'lost37'
+    sudoPassword = ''
     sudoCommand = 'echo {}|sudo -S docker {}'
   
 
